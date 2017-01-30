@@ -193,7 +193,10 @@ GRR_EXTERN  u32         fb       GRR_INIT(0);
 # if __GNUC__ && !__GNUC_STDC_INLINE__
 #  define INLINE static inline
 # else
-#  define INLINE inline
+// I've got a horrible feeling this is wrong - ie. not optimal
+// but for now I just want to clean up the compiler error
+// I suspect the "not static" issue arrived with the new toolchain
+#  define INLINE static inline
 # endif
 #endif
 #include "grrlib/GRRLIB__inline.h"
