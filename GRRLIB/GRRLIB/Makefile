@@ -19,6 +19,7 @@ endif
 NULLSTR :=
 PWD     := $(subst $(NULLSTR) ,\ ,$(shell pwd))
 
+DEPSDIR	:= deps
 INCLUDE	:= -I../lib/jpeg -I../lib/pngu -I../lib/freetype/include -I$(PWD) -I$(LIBOGC_INC)
 CFLAGS  := -O2 -Wall $(MACHDEP) $(INCLUDE)
 
@@ -29,11 +30,16 @@ ARC		:= lib$(LIB).a
 HDR		:= $(LIB).h
 INL		:= $(wildcard $(LIB)/*.h)
 
-all : $(OFILES)
+.PHONY : all clean install
+
+all : $(DEPSDIR) $(OFILES)
 	$(AR) -r $(ARC) $(OFILES)
 
+$(DEPSDIR) :
+	[ -d $@ ] || mkdir -p $@
+
 clean :
-	rm -f $(OFILES) $(ARC)
+	rm -rf $(OFILES) $(ARC) $(DEPSDIR)/
 
 install :
 	mkdir -p  $(LIBOGC_LIB)  $(LIBOGC_INC)  $(LIBOGC_INC)/grrlib
