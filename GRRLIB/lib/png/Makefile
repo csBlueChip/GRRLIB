@@ -16,6 +16,7 @@ else
 include $(DEVKITPPC)/wii_rules
 endif
 
+DEPSDIR	:= deps
 INCLUDE	:=  -I../zlib -I$(LIBOGC_INC)
 CFLAGS  := -O2 -Wall $(MACHDEP) $(INCLUDE)
 
@@ -25,11 +26,16 @@ OFILES	:= $(CFILES:.c=.o)
 ARC 	:= lib$(LIB).a
 HDR 	:= $(LIB).h $(LIB)conf.h
 
-all : $(OFILES)
+.PHONY : all clean install
+
+all : $(DEPSDIR) $(OFILES)
 	$(AR) -r $(ARC) $(OFILES)
 
+$(DEPSDIR) :
+	[ -d $@ ] || mkdir -p $@
+
 clean :
-	rm -f $(OFILES) $(ARC)
+	rm -rf $(OFILES) $(ARC) $(DEPSDIR)/
 
 install :
 	mkdir -p  $(LIBOGC_LIB)  $(LIBOGC_INC)
