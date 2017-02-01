@@ -139,6 +139,9 @@ GRRLIB_texImg*  GRRLIB_LoadTexturePNG (const u8 *my_png);
 GRRLIB_texImg*  GRRLIB_LoadTextureJPG (const u8 *my_jpg);
 GRRLIB_texImg*  GRRLIB_LoadTextureJPGEx (const u8 *my_jpg, const int);
 GRRLIB_texImg*  GRRLIB_LoadTextureBMP (const u8 *my_bmp);
+void            GRRLIB_Compose        (int xoff, int yoff, GRRLIB_texImg* layer,
+                                       GRRLIB_texImg* canvas,
+                                       GRRLIB_ComposeMode mode) ;
 
 //------------------------------------------------------------------------------
 // GRRLIB_gecko.c - USB_Gecko output facilities

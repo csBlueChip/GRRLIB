@@ -81,6 +81,15 @@ typedef  unsigned int  uint;/**< The uint keyword signifies an integral type. */
 // typedefs, enumerators & structs
 //==============================================================================
 /**
+ * Compositions Modes
+ * NORMAL : a-over-b alpha composition (normal)
+ *  ...more to come
+ */
+typedef  enum Composition_Modes {
+    GRRLIB_COMPOSE_NORMAL,
+} GRRLIB_ComposeMode;
+
+/**
  * GRRLIB Blending Modes.
  */
 typedef  enum GRRLIB_blendMode {
