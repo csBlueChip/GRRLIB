@@ -1,4 +1,5 @@
 SUBDIRS:= `ls | egrep -v '^(\.svn)$$'`
+MAKE:=make
 
 all:
 	@for i in $(SUBDIRS); do \
